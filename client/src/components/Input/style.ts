@@ -31,6 +31,10 @@ const Container = styled.div`
     }
   }
 
+  & > svg {
+    cursor: pointer;
+  }
+
   @media (max-width: 425px) {
     margin: 0;
   }

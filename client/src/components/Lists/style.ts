@@ -7,6 +7,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
 
+  margin: 0 auto;
+
   & > h2 {
     font-weight: 400;
     font-size: 12px;
