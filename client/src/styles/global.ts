@@ -20,14 +20,15 @@ export default createGlobalStyle`
     --gray-200: #D9D9D9;
     --gray-300: #50656E;
     --gray-400: #455A64;
-    --gray-500: #333333;
-    --gray-600: #95959540;
+		--gray-500: #9A9A9A;
+    --gray-600: #333333;
+    --gray-700: #95959540;
 
     --transparent: transparent;
 	}
 
 	body {
-		color: var(--gray-500);
+		color: var(--gray-600);
 		background-color: var(--gray-100);
 	}
 
@@ -49,6 +50,6 @@ export default createGlobalStyle`
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 0.5px;
-		background-color: var(--grey-500);
+		background-color: var(--grey-600);
 	}
 `;

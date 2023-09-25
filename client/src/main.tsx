@@ -5,8 +5,7 @@ import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <GlobalStyle>
-      <App />
-    </GlobalStyle>
+    <GlobalStyle />
+    <App />
   </React.StrictMode>
 );
