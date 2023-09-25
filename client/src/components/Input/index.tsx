@@ -3,11 +3,9 @@ import { useState, useContext } from "react";
 import { Container } from "./style";
 
 const Input = () => {
-  const { handleSearchNote, filteredNotes } = useContext(NoteContext);
+  const { handleSearchNote } = useContext(NoteContext);
 
   const [note, setNote] = useState<string>("");
-
-  console.log(filteredNotes);
 
   return (
     <Container>

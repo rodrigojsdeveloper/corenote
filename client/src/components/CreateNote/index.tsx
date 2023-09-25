@@ -1,8 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { NoteContext } from "../../contexts/note.context";
+import star_yellow from "../../assets/star_yellow.svg";
+import { useForm } from "react-hook-form";
 import star from "../../assets/star.svg";
 import { Container } from "./style";
 
 const CreateNote = () => {
+  const { handleCreateNote } = useContext(NoteContext);
+
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
   const [showMore, setShowMore] = useState<boolean>(false);
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -31,11 +38,30 @@ const CreateNote = () => {
     };
   }, []);
 
+  const { register, handleSubmit, setValue } = useForm();
+
+  const onSubmitFunction = (data: any) => {
+    console.log(data);
+    handleCreateNote(isFavorite, data);
+  };
+
   return (
-    <Container currentHeight={showMore ? "open" : "closed"}>
+    <Container
+      onSubmit={handleSubmit(onSubmitFunction)}
+      currentHeight={showMore ? "open" : "closed"}
+    >
       <div className="header">
-        <input placeholder="Título" />
-        <img src={star} alt="Estrela" />
+        <input placeholder="Título" {...register("title")} />
+
+        {isFavorite ? (
+          <img
+            src={star_yellow}
+            alt="Estrela Amarela"
+            onClick={() => setIsFavorite(false)}
+          />
+        ) : (
+          <img src={star} alt="Estrela" onClick={() => setIsFavorite(true)} />
+        )}
       </div>
 
       <div className="divCreateNote">
@@ -43,9 +69,12 @@ const CreateNote = () => {
           ref={textareaRef}
           placeholder="Criar nota..."
           onClick={handleTextareaClick}
+          onChange={(e) => {
+            setValue("description", e.target.value);
+          }}
         />
 
-        {showMore ? <button>Criar</button> : null}
+        {showMore ? <button type="submit">Criar</button> : null}
       </div>
     </Container>
   );

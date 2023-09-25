@@ -4,7 +4,7 @@ interface ICreateNoteStyle {
   currentHeight: "closed" | "open";
 }
 
-const Container = styled.div<ICreateNoteStyle>`
+const Container = styled.form<ICreateNoteStyle>`
   width: 100%;
   max-width: 530.52px;
 
@@ -70,6 +70,10 @@ const Container = styled.div<ICreateNoteStyle>`
       &:focus::placeholder {
         color: var(--transparent);
       }
+    }
+
+    & > img {
+      cursor: pointer;
     }
   }
 
