@@ -10,6 +10,12 @@ class NoteController {
 
     return res.status(201).json(newNote);
   }
+
+  async list(req: Request, res: Response) {
+    const notes = await new NoteService().list();
+
+    return res.json(notes);
+  }
 }
 
 export default NoteController;

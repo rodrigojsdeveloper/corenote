@@ -8,11 +8,18 @@ class NoteService {
     newNote.title = note.title;
     newNote.description = note.description;
     newNote.is_favorite = note.is_favorite;
+    newNote.color = note.color;
 
     noteRepository.create(newNote);
     await noteRepository.save(newNote);
 
     return newNote;
+  }
+
+  async list(): Promise<ReadonlyArray<Note>> {
+    const notes = await noteRepository.find();
+
+    return notes;
   }
 }
 

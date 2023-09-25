@@ -15,6 +15,8 @@ const noteRoutes = (): Router => {
     new NoteController().create
   );
 
+  routes.get("", new NoteController().list);
+
   return routes;
 };
 
