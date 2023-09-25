@@ -14,6 +14,7 @@ const Container = styled.div`
   border: 1px solid var(--gray-200);
   box-shadow: 1px 1px 3px 0px var(--color-black);
 
+  margin: 0 20px;
   padding: 7.25px 9px;
 
   & > input {
@@ -28,6 +29,10 @@ const Container = styled.div`
     &::placeholder {
       color: var(--gray-500);
     }
+  }
+
+  @media (max-width: 425px) {
+    margin: 0;
   }
 `;
 
