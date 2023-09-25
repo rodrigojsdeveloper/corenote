@@ -12,7 +12,7 @@ const Note = () => {
   return (
     <Container color={color}>
       <div className="headerNote">
-        <h2>titulo</h2>
+        <h3>titulo</h3>
 
         <img src={star} alt="Estrela" />
       </div>

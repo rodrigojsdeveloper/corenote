@@ -92,7 +92,7 @@ const Container = styled.div<IColorStyle>`
     padding: 15px 23px;
     border-bottom: 1px solid var(--color-white);
 
-    & > h2 {
+    & > h3 {
       font-weight: 700;
       font-size: 14.2px;
       line-height: 17.19px;
