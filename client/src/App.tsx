@@ -1,7 +1,11 @@
-import Input from "./components/Input";
+import Header from "./components/Header";
 
 const App = () => {
-  return <><Input /></>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default App;
