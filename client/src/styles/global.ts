@@ -23,6 +23,7 @@ export default createGlobalStyle`
 		--gray-500: #9A9A9A;
     --gray-600: #333333;
     --gray-700: #95959540;
+		--gray-800: #4F4F4D;
 
     --transparent: transparent;
 	}
@@ -50,6 +51,6 @@ export default createGlobalStyle`
 
 	::-webkit-scrollbar-thumb {
 		border-radius: 0.5px;
-		background-color: var(--grey-600);
+		background-color: var(--gray-700);
 	}
 `;
