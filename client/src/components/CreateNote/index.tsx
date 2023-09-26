@@ -40,10 +40,7 @@ const CreateNote = () => {
 
   const { register, handleSubmit, setValue } = useForm();
 
-  const onSubmitFunction = (data: any) => {
-    console.log(data);
-    handleCreateNote(isFavorite, data);
-  };
+  const onSubmitFunction = (data: any) => handleCreateNote(isFavorite, data);
 
   return (
     <Container

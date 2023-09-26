@@ -34,6 +34,9 @@ const Container = styled.div`
 
     @media (max-width: 500px) {
       grid-template-columns: repeat(1, minmax(0px, 390px));
+
+      justify-content: center;
+      align-items: center;
     }
   }
 `;

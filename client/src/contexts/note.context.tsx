@@ -66,13 +66,51 @@ export const NoteContextProvider = ({ children }: IChildren) => {
     );
   };
 
-  const handleCreateNote = (isFavorite: boolean, data: any) => {
+  const handleCreateNote = (isFavorite: boolean, data: Partial<INoteProps>) => {
     isFavorite ? (data.is_favorite = true) : (data.is_favorite = false);
     data.color = "#FFFFFF";
 
     api
       .post("notes", data)
       .then((res) => addNote(res.data))
+      .catch((error) => console.error(error));
+  };
+
+  const handleUpdateNote = (
+    id: string,
+    data: Partial<INoteProps>,
+    currentNote: INoteProps
+  ) => {
+    api
+      .patch(`notes/${id}`, data)
+      .then(() => {
+        const newNote = { ...currentNote };
+
+        const newListNotes = filteredNotes.filter(
+          (technology) => technology.id !== currentNote.id
+        );
+
+        setFilteredNotes([newNote, ...newListNotes]);
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleDeleteNote = (id: string) => {
+    api
+      .delete(`notes/${id}`)
+      .then(() => {
+        setFilteredFavorites(
+          filteredFavorites.filter((note) => note.id !== id)
+        );
+        setFilteredNotes(filteredNotes.filter((note) => note.id !== id));
+      })
+      .catch((error) => console.error(error));
+  };
+
+  const handleUpdateColor = (color: string, id: string) => {
+    api
+      .patch(`notes/${id}`, { color })
+      .then(() => {})
       .catch((error) => console.error(error));
   };
 
@@ -84,6 +122,9 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         filteredNotes,
         filteredFavorites,
         handleCreateNote,
+        handleUpdateNote,
+        handleDeleteNote,
+        handleUpdateColor,
       }}
     >
       {children}

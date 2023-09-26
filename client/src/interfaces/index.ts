@@ -20,5 +20,12 @@ export interface INoteContextData {
   filteredNotes: Array<INoteProps>;
   filteredFavorites: Array<INoteProps>;
   notes: Array<INoteProps>;
-  handleCreateNote: (isFavorite: boolean, data: any) => void;
+  handleCreateNote: (isFavorite: boolean, data: Partial<INoteProps>) => void;
+  handleUpdateNote: (
+    id: string,
+    data: Partial<INoteProps>,
+    currentNote: INoteProps
+  ) => void;
+  handleDeleteNote: (id: string) => void;
+  handleUpdateColor: (color: string, id: string) => void
 }

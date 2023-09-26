@@ -4,13 +4,13 @@ interface IColorStyle {
   color: string;
 }
 
-const Container = styled.div<IColorStyle>`
+const Container = styled.form<IColorStyle>`
   width: 100%;
   max-width: 390px;
   height: 437.59px;
 
   border-radius: 25px;
-  background-color: var(--color-white);
+  background-color: ${({ color }) => color};
   box-shadow: 2px 2px 3px 0px var(--color-black);
 
   ${({ color }) => {
@@ -104,7 +104,14 @@ const Container = styled.div<IColorStyle>`
   .containerNote {
     padding: 10px 23px;
 
+    display: flex;
+    flex-direction: column;
+
     position: relative;
+
+    img {
+      cursor: pointer;
+    }
 
     & > .description {
       height: 330px;
@@ -122,8 +129,6 @@ const Container = styled.div<IColorStyle>`
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
-      padding-top: 5px;
 
       .divIcons {
         width: 100%;

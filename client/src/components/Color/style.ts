@@ -21,14 +21,38 @@ const Container = styled.div`
   background-color: var(--color-white);
   box-shadow: 1px 1px 3px 0px var(--color-black);
 
-  & > p {
-    width: 25px;
-    height: 25px;
+  & > div {
+    display: flex;
+    flex-direction: row;
 
-    cursor: pointer;
-    border-radius: 50%;
+    & > p {
+      width: 25px;
+      height: 25px;
 
-    margin-right: 5px;
+      cursor: pointer;
+      border-radius: 50%;
+
+      margin-right: 5px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    max-width: 265px;
+    height: 96.58px;
+
+    bottom: -90px;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    & > div {
+      width: 100%;
+
+      p {
+        width: 36.71px;
+        height: 36.71px;
+      }
+    }
   }
 `;
 

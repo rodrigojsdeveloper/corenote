@@ -1,22 +1,38 @@
+import { NoteContext } from "../../contexts/note.context";
 import star_yellow from "../../assets/star_yellow.svg";
-import { INote } from "../../interfaces";
+import { INote, INoteProps } from "../../interfaces";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import star from "../../assets/star.svg";
 import { Container } from "./style";
 import x from "../../assets/x.svg";
-import { useState } from "react";
 import Color from "../Color";
 
 const Note = ({ note }: INote) => {
+  const { handleUpdateNote, handleDeleteNote, handleUpdateColor } =
+    useContext(NoteContext);
+
   const [modal, setModal] = useState<boolean>(false);
 
   const [editNote, setEditNote] = useState<boolean>(false);
 
-  const [color, setColor] = useState<string>("");
+  const [color, setColor] = useState<string>(note.color);
 
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
+  const { register, handleSubmit } = useForm();
+
+  const onSubmitFunction = (data: Partial<INoteProps>) =>
+    handleUpdateNote(note.id, data, note);
+
+  const updateColor = (newColor: string) => {
+    setColor(newColor);
+
+    handleUpdateColor(newColor, note.id);
+  };
+
   return (
-    <Container color={color}>
+    <Container onSubmit={handleSubmit(onSubmitFunction)} color={color}>
       <div className="headerNote">
         {editNote ? (
           <input className="title" defaultValue={note.title} />
@@ -86,10 +102,16 @@ const Note = ({ note }: INote) => {
               </svg>
             </div>
 
-            {modal ? <Color setColor={setColor} setModal={setModal} /> : null}
+            {modal ? (
+              <Color updateColor={updateColor} setModal={setModal} />
+            ) : null}
           </div>
 
-          <img src={x} alt="Fechar" />
+          <img
+            src={x}
+            alt="Excluir"
+            onClick={() => handleDeleteNote(note.id)}
+          />
         </div>
       </div>
     </Container>

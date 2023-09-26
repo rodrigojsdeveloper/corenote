@@ -1,4 +1,5 @@
 import noteRepository from "../repositories/note.repository";
+import { NotFoundError } from "../errors/notFound.error";
 import INote from "../interfaces/note.interface";
 import Note from "../entities/note.entity";
 
@@ -25,15 +26,19 @@ class NoteService {
   async update(note: Partial<INote>, id: string): Promise<Note> {
     const findNote = await noteRepository.findOneBy({ id });
 
-    await noteRepository.update(findNote!.id, {
-      title: note.title ? note.title : findNote!.title,
-      description: note.description ? note.description : findNote!.description,
-      is_favorite: note.is_favorite ? note.is_favorite : findNote!.is_favorite,
-      color: note.color ? note.color : findNote!.color,
+    if (!findNote) {
+      throw new NotFoundError("Note");
+    }
+
+    await noteRepository.update(findNote.id, {
+      title: note.title ? note.title : findNote.title,
+      description: note.description ? note.description : findNote.description,
+      is_favorite: note.is_favorite ? note.is_favorite : findNote.is_favorite,
+      color: note.color ? note.color : findNote.color,
     });
 
     const updatedNote = await noteRepository.findOneBy({
-      id: findNote!.id,
+      id: findNote.id,
     });
 
     return updatedNote!;
@@ -41,6 +46,10 @@ class NoteService {
 
   async delete(id: string): Promise<void> {
     const note = await noteRepository.findOneBy({ id });
+
+    if (!note) {
+      throw new NotFoundError("Note");
+    }
 
     await noteRepository.delete(note!.id);
   }
