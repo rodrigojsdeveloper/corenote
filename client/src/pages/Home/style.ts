@@ -78,13 +78,12 @@ const Container = styled.div`
       align-items: center;
 
       border-radius: 3px;
-      border: 2px solid #ffa000;
+      border: 2px solid var(--svg);
       background-color: var(--transparent);
 
       font-weight: 600;
       transition: 0.5s;
-
-      color: #ffa000;
+      color: var(--svg);
 
       &:hover {
         background-color: rgba(255, 160, 0, 0.1);

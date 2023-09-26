@@ -3,12 +3,13 @@ import { IColorStyle } from "../../interfaces";
 
 const Container = styled.form<IColorStyle>`
   width: 100%;
-  max-width: 390px;
   height: 437.59px;
 
   border-radius: 25px;
   background-color: ${({ color }) => color};
   box-shadow: 2px 2px 3px 0px var(--color-black);
+
+  transition: background 0.5s ease 0s;
 
   ${({ color }) => {
     switch (color) {

@@ -111,14 +111,16 @@ const Container = styled.form<ICreateNoteStyle>`
       font-size: 12px;
       line-height: 14px;
       color: var(--gray-300);
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
     }
   }
 
-  @media (max-width: 425px) {
-    .header,
-    .divCreateNote {
-      padding: 13px 12.5px;
-    }
+  @media (max-width: 840px) {
+    border-radius: 25px;
   }
 `;
 

@@ -13,6 +13,8 @@ const CreateNote = () => {
 
   const [showMore, setShowMore] = useState<boolean>(false);
 
+  const [disabled, setDisabled] = useState<boolean>(false);
+
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const handleTextareaClick = () => {
@@ -54,7 +56,13 @@ const CreateNote = () => {
       currentHeight={showMore ? "open" : "closed"}
     >
       <div className="header">
-        <input placeholder="Título" {...register("title")} />
+        <input
+          placeholder="Título"
+          {...register("title")}
+          onChange={(e) =>
+            e.target.value.length > 0 ? setDisabled(false) : setDisabled(true)
+          }
+        />
 
         {isFavorite ? (
           <img
@@ -77,7 +85,11 @@ const CreateNote = () => {
           }}
         />
 
-        {showMore ? <button type="submit">Criar</button> : null}
+        {showMore ? (
+          <button type="submit" disabled={disabled}>
+            Criar
+          </button>
+        ) : null}
       </div>
     </Container>
   );

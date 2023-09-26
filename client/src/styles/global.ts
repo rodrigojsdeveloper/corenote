@@ -27,7 +27,8 @@ export default createGlobalStyle`
 		--gray-900: #464646;
 
     --transparent: transparent;
-
+		
+		--svg: #ffa000;
 		--hover-svg: #FFE3B3;
 	}
 

@@ -49,7 +49,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         setFilteredNotes(filteredNotFavorites);
         setFilteredFavorites(filteredFavorites);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => console.error(error))
   }, [notes, filteredNotes, filteredFavorites]);
 
   const handleSearchNote = (title: string) => {

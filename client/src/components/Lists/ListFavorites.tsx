@@ -1,8 +1,8 @@
 import { NoteContext } from "../../contexts/note.context";
+import MessageEmpty from "../MessageEmpty";
 import { Container } from "./style";
 import { useContext } from "react";
 import Note from "../Note";
-import MessageEmpty from "../MessageEmpty";
 
 const ListFavorites = () => {
   const { filteredFavorites } = useContext(NoteContext);

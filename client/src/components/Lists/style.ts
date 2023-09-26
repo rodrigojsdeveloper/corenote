@@ -22,21 +22,13 @@ const Container = styled.div`
     width: 100%;
 
     display: grid;
-    grid-template-columns: repeat(3, minmax(0px, 390px));
-    grid-gap: 34.61px;
+    grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+    gap: 35px;
 
-    margin: 0 auto;
-
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(2, minmax(0px, 390px));
-      grid-gap: 25px;
-    }
-
-    @media (max-width: 500px) {
-      grid-template-columns: repeat(1, minmax(0px, 390px));
+    @media (max-width: 840px) {
+      grid-template-columns: repeat(auto-fill, minmax(0, 390px));
 
       justify-content: center;
-      align-items: center;
     }
   }
 `;

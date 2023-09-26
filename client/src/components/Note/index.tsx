@@ -96,6 +96,7 @@ const Note = ({ note }: INote) => {
                   setEditNote(false);
                 }
               }}
+              style={{ backgroundColor: editNote ? "#FFE3B3" : "transparent" }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,6 +120,7 @@ const Note = ({ note }: INote) => {
                   setModal(false);
                 }
               }}
+              style={{ backgroundColor: modal ? "#FFE3B3" : "transparent" }}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
