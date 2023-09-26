@@ -29,6 +29,10 @@ const Container = styled.div`
     &::placeholder {
       color: var(--gray-500);
     }
+
+    &:focus::placeholder {
+      color: var(--transparent);
+    }
   }
 
   & > svg {

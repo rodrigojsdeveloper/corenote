@@ -94,7 +94,9 @@ const Container = styled.form<IColorStyle>`
     align-items: center;
 
     padding: 15px 23px;
-    border-bottom: 1px solid var(--color-white);
+    border-bottom: 1px solid
+      ${({ color }) =>
+        color === "#FFFFFF" ? "var(--gray-200)" : "var(--color-white)"};
 
     & > .title {
       font-weight: 700;
