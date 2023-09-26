@@ -1,16 +1,13 @@
-import logo from "../../../public/favicon.svg";
 import { Container } from "./style";
 import x from "../../assets/x.svg";
 import Input from "../Input";
+import Logo from "../Logo";
 
 const DesktopHeader = () => {
   return (
     <div className="container desktop">
       <div className="content">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
-          <h1>CoreNotes</h1>
-        </div>
+        <Logo />
         <Input />
       </div>
       <img src={x} alt="Fechar" />
@@ -22,10 +19,7 @@ const MobileHeader = () => {
   return (
     <div className="container mobile">
       <div className="content">
-        <div className="logo">
-          <img src={logo} alt="Logo" />
-          <h1>CoreNotes</h1>
-        </div>
+        <Logo />
         <img src={x} alt="Fechar" />
       </div>
       <Input />
