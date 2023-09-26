@@ -11,13 +11,15 @@ const ListOthers = () => {
     <Container>
       <h2>Outras</h2>
 
-      <menu>
-        {filteredNotes.length > 0 ? (
-          filteredNotes.map((note) => <Note note={note} key={note.id} />)
-        ) : (
-          <MessageEmpty message="Não há outras notas" />
-        )}
-      </menu>
+      {filteredNotes.length > 0 ? (
+        <menu>
+          {filteredNotes.map((note) => (
+            <Note note={note} key={note.id} />
+          ))}
+        </menu>
+      ) : (
+        <MessageEmpty message="Não há outras notas" />
+      )}
     </Container>
   );
 };

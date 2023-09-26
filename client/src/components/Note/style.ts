@@ -80,6 +80,10 @@ const Container = styled.form<IColorStyle>`
     }
   }}
 
+  img {
+    cursor: pointer;
+  }
+
   .headerNote {
     width: 100%;
     height: 47px;
@@ -121,7 +125,7 @@ const Container = styled.form<IColorStyle>`
       font-size: 13px;
       line-height: 15.73px;
       color: var(--gray-800);
-      
+
       overflow-y: auto;
       background-color: var(--transparent);
     }

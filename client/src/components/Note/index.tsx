@@ -14,6 +14,7 @@ const Note = ({ note }: INote) => {
     handleDeleteNote,
     handleUpdateColor,
     handleUpdateFavorite,
+    handleUpdate,
   } = useContext(NoteContext);
 
   const [modal, setModal] = useState<boolean>(false);
@@ -21,6 +22,10 @@ const Note = ({ note }: INote) => {
   const [editNote, setEditNote] = useState<boolean>(false);
 
   const [color, setColor] = useState<string>(note.color);
+
+  const [title, setTitle] = useState<string>(note.title);
+
+  const [description, setDescription] = useState<string>(note.title);
 
   const [isFavorite, setIsFavorite] = useState<boolean>(note.is_favorite);
 
@@ -39,7 +44,11 @@ const Note = ({ note }: INote) => {
     <Container onSubmit={handleSubmit(onSubmitFunction)} color={color}>
       <div className="headerNote">
         {editNote ? (
-          <input className="title" defaultValue={note.title} />
+          <input
+            className="title"
+            defaultValue={note.title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         ) : (
           <h3 className="title">{note.title}</h3>
         )}
@@ -66,7 +75,11 @@ const Note = ({ note }: INote) => {
 
       <div className="containerNote">
         {editNote ? (
-          <textarea className="description" defaultValue={note.description} />
+          <textarea
+            className="description"
+            defaultValue={note.description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
         ) : (
           <p className="description">{note.description}</p>
         )}
@@ -79,6 +92,7 @@ const Note = ({ note }: INote) => {
                 setEditNote(true);
 
                 if (editNote) {
+                  handleUpdate(title, description, note.id);
                   setEditNote(false);
                 }
               }}

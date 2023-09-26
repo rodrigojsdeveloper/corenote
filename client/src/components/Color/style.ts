@@ -7,7 +7,7 @@ const Container = styled.div`
 
   position: absolute;
   bottom: -40px;
-  left: 40px;
+  left: 0;
 
   display: flex;
   flex-direction: row;

@@ -11,13 +11,15 @@ const ListFavorites = () => {
     <Container>
       <h2>Favoritas</h2>
 
-      <menu>
-        {filteredFavorites.length > 0 ? (
-          filteredFavorites.map((note) => <Note note={note} key={note.id} />)
-        ) : (
-          <MessageEmpty message="Não há favoritos" />
-        )}
-      </menu>
+      {filteredFavorites.length > 0 ? (
+        <menu>
+          {filteredFavorites.map((note) => (
+            <Note note={note} key={note.id} />
+          ))}
+        </menu>
+      ) : (
+        <MessageEmpty message="Não há favoritos" />
+      )}
     </Container>
   );
 };

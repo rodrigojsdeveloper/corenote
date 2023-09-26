@@ -121,6 +121,13 @@ export const NoteContextProvider = ({ children }: IChildren) => {
       .catch((error) => console.error(error));
   };
 
+  const handleUpdate = (title: string, description: string, id: string) => {
+    api
+      .patch(`notes/${id}`, { title, description })
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   return (
     <NoteContext.Provider
       value={{
@@ -133,6 +140,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         handleDeleteNote,
         handleUpdateColor,
         handleUpdateFavorite,
+        handleUpdate,
       }}
     >
       {children}
