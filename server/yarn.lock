@@ -714,7 +714,7 @@
     "@types/range-parser" "*"
     "@types/send" "*"
 
-"@types/express@^4.17.18":
+"@types/express@*", "@types/express@^4.17.18":
   version "4.17.18"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.18.tgz#efabf5c4495c1880df1bdffee604b143b29c4a95"
   integrity sha512-Sxv8BSLLgsBYmcnGdGjjEjqET2U+AKAdCRODmMiq02FgjwuV75Ut85DRpvFjyw/Mk0vgUOliGRU0UUmuuZHByQ==
@@ -834,6 +834,14 @@
   integrity sha512-Vc/5/pRwSC055fU7Wu8erTj4gLpID9SdG2zRMuqaHLni3GTsrJ8gyB6MbFZZGLW6vQaGPhiUWRB6uWglv87MEg==
   dependencies:
     "@types/superagent" "*"
+
+"@types/swagger-ui-express@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@types/swagger-ui-express/-/swagger-ui-express-4.1.4.tgz#4cf91ed46a4d17797a38cbf9805ad6fa4730dad6"
+  integrity sha512-h6dfIPFveCJKpStDtjrB+4pig4DAf9Uu2Z51RB7Fj3s6AifexmqhZxBoG50K/k3Afz7wyXsIAY5ZIDTlC2VjrQ==
+  dependencies:
+    "@types/express" "*"
+    "@types/serve-static" "*"
 
 "@types/yargs-parser@*":
   version "21.0.1"
@@ -3547,6 +3555,18 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swagger-ui-dist@>=5.0.0:
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.7.2.tgz#b783568cc7f494a9ad9173c9c98fd0cbbb5c851a"
+  integrity sha512-mVZc9QVQ6pTCV5crli3+Ng+DoMPwdtMHK8QLk2oX8Mtamp4D/hV+uYdC3lV0JZrDgpNEcjs0RrWTqMwwosuLPQ==
+
+swagger-ui-express@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-5.0.0.tgz#7a00a18dd909574cb0d628574a299b9ba53d4d49"
+  integrity sha512-tsU9tODVvhyfkNSvf03E6FAk+z+5cU3lXAzMy6Pv4av2Gt2xA0++fogwC4qo19XuFf6hdxevPuVCSKFuMHJhFA==
+  dependencies:
+    swagger-ui-dist ">=5.0.0"
 
 tar@^6.0.2, tar@^6.1.11, tar@^6.1.2:
   version "6.2.0"

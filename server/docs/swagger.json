@@ -1,0 +1,163 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Corelab Challenge API",
+    "description": "This Corelab Challenge API",
+    "termsOfService": "http://localhost:3000/api/terms",
+    "contact": {
+      "email": "rodrigojsdeveloper@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/api/notes": {
+      "post": {
+        "summary": "Note registration",
+        "description": "This route will be responsible for registering the note",
+        "tags": ["Notes"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Notes"
+              },
+              "examples": {
+                "notes": {
+                  "value": {
+                    "title": "Lorem Ipsum",
+                    "description": "Clique ou arraste o arquivo para esta área para fazer upload",
+                    "is_favorite": true,
+                    "color": "#FFFFFF"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Notes"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "List all notes",
+        "description": "This route will be responsible for listing all notes",
+        "tags": ["Notes"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/notes/{id}": {
+      "patch": {
+        "summary": "Update note",
+        "description": "This route will be responsible for updating note",
+        "tags": ["Notes"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Update note",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Notes"
+              },
+              "examples": {
+                "transaction": {
+                  "value": {
+                    "is_favorite": false,
+                    "color": "#000000"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete note",
+        "description": "This route will be responsible for deleting note",
+        "tags": ["Notes"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Delete note",
+            "required": true
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Notes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "is_favorite": {
+            "type": "boolean"
+          },
+          "color": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
