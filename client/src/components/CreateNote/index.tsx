@@ -4,6 +4,7 @@ import star_yellow from "../../assets/star_yellow.svg";
 import { useForm } from "react-hook-form";
 import star from "../../assets/star.svg";
 import { Container } from "./style";
+import { INoteProps } from "../../interfaces";
 
 const CreateNote = () => {
   const { handleCreateNote } = useContext(NoteContext);
@@ -38,9 +39,14 @@ const CreateNote = () => {
     };
   }, []);
 
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue, reset } = useForm();
 
-  const onSubmitFunction = (data: any) => handleCreateNote(isFavorite, data);
+  const onSubmitFunction = (data: Partial<INoteProps>) => {
+    handleCreateNote(isFavorite, data);
+    reset();
+    setShowMore(false);
+    setIsFavorite(false);
+  };
 
   return (
     <Container
