@@ -56,8 +56,4 @@ export default createGlobalStyle`
 		border-radius: 0.5px;
 		background-color: var(--gray-700);
 	}
-	
-	main {
-		padding: 0 10px;
-	}
 `;

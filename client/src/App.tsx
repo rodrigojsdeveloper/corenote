@@ -1,19 +1,5 @@
-import ListFavorites from "./components/Lists/ListFavorites";
-import ListOthers from "./components/Lists/ListOthers";
-import CreateNote from "./components/CreateNote";
-import Header from "./components/Header";
+import AllRoutes from "./routes";
 
-const App = () => {
-  return (
-    <>
-      <Header />
-      <main>
-        <CreateNote />
-        <ListFavorites />
-        <ListOthers />
-      </main>
-    </>
-  );
-};
+const App = () => <AllRoutes />;
 
 export default App;
