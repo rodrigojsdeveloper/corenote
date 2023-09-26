@@ -28,6 +28,7 @@ describe("Testing all note routes", () => {
     expect(createdNote.body).toHaveProperty("is_favorite");
     expect(createdNote.body).toHaveProperty("color");
     expect(createdNote.body).toHaveProperty("created_at");
+    expect(createdNote.body).toHaveProperty("updated_at");
   });
 
   test("Must be able to list all notes", async () => {
@@ -49,6 +50,7 @@ describe("Testing all note routes", () => {
     expect(response.body).toHaveProperty("is_favorite");
     expect(response.body).toHaveProperty("color");
     expect(response.body).toHaveProperty("created_at");
+    expect(response.body).toHaveProperty("updated_at");
   });
 
   test("Must be able to prevent editing a note with invalid id", async () => {

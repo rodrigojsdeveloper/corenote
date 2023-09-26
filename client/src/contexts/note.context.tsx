@@ -50,7 +50,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         setFilteredFavorites(filteredFavorites);
       })
       .catch((error) => console.error(error));
-  }, [setNotes]);
+  }, [notes, filteredNotes, filteredFavorites]);
 
   const handleSearchNote = (title: string) => {
     setFilteredNotes(
@@ -87,7 +87,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         const newNote = { ...currentNote };
 
         const newListNotes = filteredNotes.filter(
-          (technology) => technology.id !== currentNote.id
+          (note) => note.id !== currentNote.id
         );
 
         setFilteredNotes([newNote, ...newListNotes]);
@@ -114,6 +114,13 @@ export const NoteContextProvider = ({ children }: IChildren) => {
       .catch((error) => console.error(error));
   };
 
+  const handleUpdateFavorite = (is_favorite: boolean, id: string) => {
+    api
+      .patch(`notes/${id}`, { is_favorite })
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   return (
     <NoteContext.Provider
       value={{
@@ -125,6 +132,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         handleUpdateNote,
         handleDeleteNote,
         handleUpdateColor,
+        handleUpdateFavorite,
       }}
     >
       {children}

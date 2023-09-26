@@ -9,8 +9,12 @@ import x from "../../assets/x.svg";
 import Color from "../Color";
 
 const Note = ({ note }: INote) => {
-  const { handleUpdateNote, handleDeleteNote, handleUpdateColor } =
-    useContext(NoteContext);
+  const {
+    handleUpdateNote,
+    handleDeleteNote,
+    handleUpdateColor,
+    handleUpdateFavorite,
+  } = useContext(NoteContext);
 
   const [modal, setModal] = useState<boolean>(false);
 
@@ -18,9 +22,9 @@ const Note = ({ note }: INote) => {
 
   const [color, setColor] = useState<string>(note.color);
 
-  const [isFavorite, setIsFavorite] = useState<boolean>(false);
+  const [isFavorite, setIsFavorite] = useState<boolean>(note.is_favorite);
 
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
 
   const onSubmitFunction = (data: Partial<INoteProps>) =>
     handleUpdateNote(note.id, data, note);
@@ -39,14 +43,24 @@ const Note = ({ note }: INote) => {
         ) : (
           <h3 className="title">{note.title}</h3>
         )}
-        {note.is_favorite ? (
+        {isFavorite ? (
           <img
             src={star_yellow}
             alt="Estrela Amarela"
-            onClick={() => setIsFavorite(false)}
+            onClick={() => {
+              setIsFavorite(false);
+              handleUpdateFavorite(!isFavorite, note.id);
+            }}
           />
         ) : (
-          <img src={star} alt="Estrela" onClick={() => setIsFavorite(true)} />
+          <img
+            src={star}
+            alt="Estrela"
+            onClick={() => {
+              setIsFavorite(true);
+              handleUpdateFavorite(!isFavorite, note.id);
+            }}
+          />
         )}
       </div>
 

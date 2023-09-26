@@ -26,6 +26,7 @@ describe("Testing all service note methods", () => {
     expect(createdNote).toHaveProperty("is_favorite");
     expect(createdNote).toHaveProperty("color");
     expect(createdNote).toHaveProperty("created_at");
+    expect(createdNote).toHaveProperty("updated_at");
   });
 
   it("Must be able to list all notes", async () => {
@@ -43,6 +44,7 @@ describe("Testing all service note methods", () => {
     expect(result).toHaveProperty("is_favorite");
     expect(result).toHaveProperty("color");
     expect(result).toHaveProperty("created_at");
+    expect(result).toHaveProperty("updated_at");
   });
 
   it("Must be able to delete a note", async () => {

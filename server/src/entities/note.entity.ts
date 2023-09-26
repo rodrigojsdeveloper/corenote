@@ -2,6 +2,7 @@ import {
   Entity,
   Column,
   CreateDateColumn,
+  UpdateDateColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
@@ -24,6 +25,9 @@ class Note {
 
   @CreateDateColumn()
   created_at: Date;
+  
+  @UpdateDateColumn()
+  updated_at: Date;
 }
 
 export default Note;

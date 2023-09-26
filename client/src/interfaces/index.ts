@@ -27,5 +27,10 @@ export interface INoteContextData {
     currentNote: INoteProps
   ) => void;
   handleDeleteNote: (id: string) => void;
-  handleUpdateColor: (color: string, id: string) => void
+  handleUpdateColor: (color: string, id: string) => void;
+  handleUpdateFavorite: (is_favorite: boolean, id: string) => void;
+}
+
+export interface IMessageEmpty {
+  message: string;
 }

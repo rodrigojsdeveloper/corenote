@@ -30,10 +30,18 @@ class NoteService {
       throw new NotFoundError("Note");
     }
 
+    let updatedIsFavorite: boolean;
+
+    if (typeof note.is_favorite === "boolean") {
+      updatedIsFavorite = note.is_favorite;
+    } else {
+      updatedIsFavorite = findNote.is_favorite;
+    }
+
     await noteRepository.update(findNote.id, {
       title: note.title ? note.title : findNote.title,
       description: note.description ? note.description : findNote.description,
-      is_favorite: note.is_favorite ? note.is_favorite : findNote.is_favorite,
+      is_favorite: updatedIsFavorite,
       color: note.color ? note.color : findNote.color,
     });
 

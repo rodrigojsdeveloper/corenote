@@ -98,6 +98,7 @@ const Container = styled.form<IColorStyle>`
       line-height: 17.19px;
 
       color: var(--gray-800);
+      background-color: var(--transparent);
     }
   }
 
@@ -120,8 +121,9 @@ const Container = styled.form<IColorStyle>`
       font-size: 13px;
       line-height: 15.73px;
       color: var(--gray-800);
-
+      
       overflow-y: auto;
+      background-color: var(--transparent);
     }
 
     .contentNote {
