@@ -1,8 +1,5 @@
+import { ICreateNoteStyle } from "../../interfaces";
 import styled, { css } from "styled-components";
-
-interface ICreateNoteStyle {
-  currentHeight: "closed" | "open";
-}
 
 const Container = styled.form<ICreateNoteStyle>`
   width: 100%;

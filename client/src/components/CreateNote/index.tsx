@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { NoteContext } from "../../contexts/note.context";
 import star_yellow from "../../assets/star_yellow.svg";
+import { INoteProps } from "../../interfaces";
 import { useForm } from "react-hook-form";
 import star from "../../assets/star.svg";
 import { Container } from "./style";
-import { INoteProps } from "../../interfaces";
 
 const CreateNote = () => {
   const { handleCreateNote } = useContext(NoteContext);

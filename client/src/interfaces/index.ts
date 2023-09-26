@@ -12,6 +12,19 @@ export interface INote {
   note: INoteProps;
 }
 
+export interface ICreateNoteStyle {
+  currentHeight: "closed" | "open";
+}
+
+export interface IColor {
+  updateColor: (newColor: string) => void;
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export interface IColorStyle {
+  color: string;
+}
+
 export interface IChildren {
   children: React.ReactNode;
 }

@@ -1,8 +1,5 @@
 import styled, { css } from "styled-components";
-
-interface IColorStyle {
-  color: string;
-}
+import { IColorStyle } from "../../interfaces";
 
 const Container = styled.form<IColorStyle>`
   width: 100%;

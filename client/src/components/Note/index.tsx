@@ -111,7 +111,15 @@ const Note = ({ note }: INote) => {
               </svg>
             </div>
 
-            <div className="divSvg" onClick={() => setModal(true)}>
+            <div
+              className="divSvg"
+              onClick={() => {
+                setModal(true);
+                if (modal) {
+                  setModal(false);
+                }
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"

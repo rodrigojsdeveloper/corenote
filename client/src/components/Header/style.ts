@@ -33,6 +33,10 @@ const Container = styled.header`
 
     margin: 0 auto;
 
+    & > img {
+      cursor: pointer;
+    }
+
     .content {
       width: 100%;
       max-width: 685.48px;

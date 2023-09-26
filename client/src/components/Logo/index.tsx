@@ -1,4 +1,4 @@
-import logo from "../../../public/favicon.svg";
+import logo from "../../assets/logo.svg";
 import { Container } from "./style";
 
 const Logo = () => {

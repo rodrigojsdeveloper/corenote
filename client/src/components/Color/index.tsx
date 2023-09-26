@@ -1,9 +1,5 @@
+import { IColor } from "../../interfaces";
 import { Container } from "./style";
-
-interface IColor {
-  updateColor: (newColor: string) => void;
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 const Color = ({ updateColor, setModal }: IColor) => {
   return (
