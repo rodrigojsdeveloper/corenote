@@ -13,14 +13,41 @@ export const NoteContextProvider = ({ children }: IChildren) => {
     []
   );
 
-  const addNote = (note: INoteProps) => setNotes([...notes, note]);
+  const addNote = (note: INoteProps) => {
+    if (note.is_favorite) {
+      setFilteredFavorites([note, ...filteredFavorites]);
+    } else {
+      setFilteredNotes([note, ...filteredNotes]);
+    }
+  };
 
   useEffect(() => {
     api
       .get("notes")
       .then((res) => {
-        setNotes(res.data);
-        setFilteredNotes(res.data);
+        const filteredNotFavorites = res.data.filter(
+          (note: INoteProps) => note.is_favorite !== true
+        );
+
+        const filteredFavorites = res.data.filter(
+          (note: INoteProps) => note.is_favorite === true
+        );
+
+        filteredNotFavorites.sort((a: INoteProps, b: INoteProps) => {
+          const dateA = new Date(a.created_at);
+          const dateB = new Date(b.created_at);
+          return dateB.getTime() - dateA.getTime();
+        });
+
+        filteredFavorites.sort((a: INoteProps, b: INoteProps) => {
+          const dateA = new Date(a.created_at);
+          const dateB = new Date(b.created_at);
+          return dateB.getTime() - dateA.getTime();
+        });
+
+        setNotes(filteredNotFavorites);
+        setFilteredNotes(filteredNotFavorites);
+        setFilteredFavorites(filteredFavorites);
       })
       .catch((error) => console.error(error));
   }, [setNotes]);
@@ -28,6 +55,12 @@ export const NoteContextProvider = ({ children }: IChildren) => {
   const handleSearchNote = (title: string) => {
     setFilteredNotes(
       notes.filter((note) =>
+        note.title.toLowerCase().includes(title.toLowerCase())
+      )
+    );
+
+    setFilteredFavorites(
+      filteredFavorites.filter((note) =>
         note.title.toLowerCase().includes(title.toLowerCase())
       )
     );
@@ -42,15 +75,6 @@ export const NoteContextProvider = ({ children }: IChildren) => {
       .then((res) => addNote(res.data))
       .catch((error) => console.error(error));
   };
-
-  const handleFavoritesNote = () => {
-    console.log(notes.filter((note) => note.is_favorite === true))
-    setFilteredFavorites(notes.filter((note) => note.is_favorite === true));
-  };
-
-  useEffect(() => {
-    handleFavoritesNote();
-  }, []);
 
   return (
     <NoteContext.Provider

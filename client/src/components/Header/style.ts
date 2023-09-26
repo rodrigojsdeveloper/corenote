@@ -44,7 +44,7 @@ const Container = styled.header`
 
       .logo {
         width: 100%;
-        max-width: 127.62px;
+        max-width: 122.5px;
 
         display: flex;
         flex-direction: row;
@@ -70,7 +70,7 @@ const Container = styled.header`
 
   @media (max-width: 425px) {
     height: auto;
-    padding-bottom: 15px;
+    padding: 15px 10px;
 
     .container.mobile {
       display: flex;
@@ -79,10 +79,6 @@ const Container = styled.header`
     .content {
       margin-bottom: 15px;
     }
-  }
-
-  @media (max-width: 425px) {
-    padding: 10px 15px 15px;
   }
 `;
 

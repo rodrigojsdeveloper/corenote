@@ -17,6 +17,10 @@ const noteRoutes = (): Router => {
 
   routes.get("", new NoteController().list);
 
+  routes.patch("/:id", new NoteController().update);
+
+  routes.delete("/:id", new NoteController().delete);
+
   return routes;
 };
 

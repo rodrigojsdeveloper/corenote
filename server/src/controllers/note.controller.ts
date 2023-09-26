@@ -16,6 +16,24 @@ class NoteController {
 
     return res.json(notes);
   }
+
+  async update(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    const data: Partial<INote> = req.body;
+
+    const updatedNote = await new NoteService().update(data, id);
+
+    return res.json(updatedNote);
+  }
+
+  async delete(req: Request, res: Response) {
+    const id: string = req.params.id;
+
+    await new NoteService().delete(id);
+
+    return res.status(204).json();
+  }
 }
 
 export default NoteController;

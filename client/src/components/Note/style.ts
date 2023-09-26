@@ -92,7 +92,7 @@ const Container = styled.div<IColorStyle>`
     padding: 15px 23px;
     border-bottom: 1px solid var(--color-white);
 
-    & > h3 {
+    & > .title {
       font-weight: 700;
       font-size: 14.2px;
       line-height: 17.19px;
@@ -106,8 +106,8 @@ const Container = styled.div<IColorStyle>`
 
     position: relative;
 
-    & > p {
-      height: 340px;
+    & > .description {
+      height: 330px;
 
       font-weight: 400;
       font-size: 13px;

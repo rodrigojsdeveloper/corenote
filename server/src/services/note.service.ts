@@ -21,6 +21,29 @@ class NoteService {
 
     return notes;
   }
+
+  async update(note: Partial<INote>, id: string): Promise<Note> {
+    const findNote = await noteRepository.findOneBy({ id });
+
+    await noteRepository.update(findNote!.id, {
+      title: note.title ? note.title : findNote!.title,
+      description: note.description ? note.description : findNote!.description,
+      is_favorite: note.is_favorite ? note.is_favorite : findNote!.is_favorite,
+      color: note.color ? note.color : findNote!.color,
+    });
+
+    const updatedNote = await noteRepository.findOneBy({
+      id: findNote!.id,
+    });
+
+    return updatedNote!;
+  }
+
+  async delete(id: string): Promise<void> {
+    const note = await noteRepository.findOneBy({ id });
+
+    await noteRepository.delete(note!.id);
+  }
 }
 
 export default NoteService;

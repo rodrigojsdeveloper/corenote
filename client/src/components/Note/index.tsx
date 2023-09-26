@@ -1,3 +1,4 @@
+import star_yellow from "../../assets/star_yellow.svg";
 import { INote } from "../../interfaces";
 import star from "../../assets/star.svg";
 import { Container } from "./style";
@@ -8,22 +9,50 @@ import Color from "../Color";
 const Note = ({ note }: INote) => {
   const [modal, setModal] = useState<boolean>(false);
 
+  const [editNote, setEditNote] = useState<boolean>(false);
+
   const [color, setColor] = useState<string>("");
+
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   return (
     <Container color={color}>
       <div className="headerNote">
-        <h3>{note.title}</h3>
-
-        <img src={star} alt="Estrela" />
+        {editNote ? (
+          <input className="title" defaultValue={note.title} />
+        ) : (
+          <h3 className="title">{note.title}</h3>
+        )}
+        {note.is_favorite ? (
+          <img
+            src={star_yellow}
+            alt="Estrela Amarela"
+            onClick={() => setIsFavorite(false)}
+          />
+        ) : (
+          <img src={star} alt="Estrela" onClick={() => setIsFavorite(true)} />
+        )}
       </div>
 
       <div className="containerNote">
-        <p>{note.description}</p>
+        {editNote ? (
+          <textarea className="description" defaultValue={note.description} />
+        ) : (
+          <p className="description">{note.description}</p>
+        )}
 
         <div className="contentNote">
           <div className="divIcons">
-            <div className="divSvg">
+            <div
+              className="divSvg"
+              onClick={() => {
+                setEditNote(true);
+
+                if (editNote) {
+                  setEditNote(false);
+                }
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
