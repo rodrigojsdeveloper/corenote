@@ -38,7 +38,7 @@ const Container = styled.div`
         justify-content: space-between;
         align-items: center;
 
-        border-radius: 3px;
+        border-radius: var(--border-radius);
         border: 1.5px solid var(--gray-200);
 
         padding: 20px;
@@ -54,7 +54,7 @@ const Container = styled.div`
 
           padding: 10px;
 
-          border-radius: 3px;
+          border-radius: var(--border-radius);
           background-color: var(--hover-svg);
         }
 
@@ -65,6 +65,20 @@ const Container = styled.div`
 
           padding-left: 15px;
           color: grey;
+        }
+
+        @media (max-width: 370px) {
+          height: auto;
+          flex-direction: column;
+
+          & > figure {
+            margin-bottom: 15px;
+          }
+
+          & > .home-text {
+            text-align: center;
+            padding-left: 0;
+          }
         }
       }
     }
@@ -77,7 +91,7 @@ const Container = styled.div`
       justify-content: center;
       align-items: center;
 
-      border-radius: 3px;
+      border-radius: var(--border-radius);
       border: 2px solid var(--svg);
       background-color: var(--transparent);
 

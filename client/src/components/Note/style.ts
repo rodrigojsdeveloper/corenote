@@ -154,7 +154,7 @@ const Container = styled.form<IColorStyle>`
           align-items: center;
 
           cursor: pointer;
-          border-radius: 50%;
+          border-radius: var(--border-radius-50);
 
           &:hover {
             background-color: var(--hover-svg);

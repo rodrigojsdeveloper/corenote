@@ -34,8 +34,8 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         );
 
         filteredNotFavorites.sort((a: INoteProps, b: INoteProps) => {
-          const dateA = new Date(a.updated_at);
-          const dateB = new Date(b.updated_at);
+          const dateA = new Date(a.created_at);
+          const dateB = new Date(b.created_at);
           return dateB.getTime() - dateA.getTime();
         });
 
@@ -49,7 +49,7 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         setFilteredNotes(filteredNotFavorites);
         setFilteredFavorites(filteredFavorites);
       })
-      .catch((error) => console.error(error))
+      .catch((error) => console.error(error));
   }, [notes, filteredNotes, filteredFavorites]);
 
   const handleSearchNote = (title: string) => {

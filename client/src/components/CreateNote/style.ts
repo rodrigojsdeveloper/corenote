@@ -5,8 +5,8 @@ const Container = styled.form<ICreateNoteStyle>`
   width: 100%;
   max-width: 530.52px;
 
-  border-radius: 3px;
   border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
   background-color: var(--color-white);
   box-shadow: 1px 1px 3px 0px var(--color-black);
 
@@ -103,8 +103,8 @@ const Container = styled.form<ICreateNoteStyle>`
       width: 50px;
       height: 30px;
 
-      border-radius: 3px;
       border: 2px solid var(--gray-200);
+      border-radius: var(--border-radius);
       background-color: var(--transparent);
 
       font-weight: 400;
@@ -117,10 +117,6 @@ const Container = styled.form<ICreateNoteStyle>`
         cursor: not-allowed;
       }
     }
-  }
-
-  @media (max-width: 840px) {
-    border-radius: 25px;
   }
 `;
 

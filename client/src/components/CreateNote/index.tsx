@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { NoteContext } from "../../contexts/note.context";
 import star_yellow from "../../assets/star_yellow.svg";
 import { INoteProps } from "../../interfaces";
@@ -13,15 +13,9 @@ const CreateNote = () => {
 
   const [showMore, setShowMore] = useState<boolean>(false);
 
-  const [disabled, setDisabled] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-
-  const handleTextareaClick = () => {
-    if (textareaRef.current && !showMore) {
-      setShowMore(true);
-    }
-  };
 
   useEffect(() => {
     const handleDocumentClick = (e: MouseEvent) => {
@@ -43,6 +37,20 @@ const CreateNote = () => {
 
   const { register, handleSubmit, setValue, reset } = useForm();
 
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDisabled(e.target.value.length === 0);
+  };
+
+  const handleFavoriteToggle = () => {
+    setIsFavorite(!isFavorite);
+  };
+
+  const handleTextareaClick = () => {
+    if (textareaRef.current && !showMore) {
+      setShowMore(true);
+    }
+  };
+
   const onSubmitFunction = (data: Partial<INoteProps>) => {
     handleCreateNote(isFavorite, data);
     reset();
@@ -59,20 +67,14 @@ const CreateNote = () => {
         <input
           placeholder="Título"
           {...register("title")}
-          onChange={(e) =>
-            e.target.value.length > 0 ? setDisabled(false) : setDisabled(true)
-          }
+          onChange={handleTitleChange}
         />
 
-        {isFavorite ? (
-          <img
-            src={star_yellow}
-            alt="Estrela Amarela"
-            onClick={() => setIsFavorite(false)}
-          />
-        ) : (
-          <img src={star} alt="Estrela" onClick={() => setIsFavorite(true)} />
-        )}
+        <img
+          src={isFavorite ? star_yellow : star}
+          alt={isFavorite ? "Estrela Amarela" : "Estrela"}
+          onClick={handleFavoriteToggle}
+        />
       </div>
 
       <div className="divCreateNote">
@@ -85,11 +87,11 @@ const CreateNote = () => {
           }}
         />
 
-        {showMore ? (
+        {showMore && (
           <button type="submit" disabled={disabled}>
             Criar
           </button>
-        ) : null}
+        )}
       </div>
     </Container>
   );

@@ -16,8 +16,8 @@ const Container = styled.div`
 
   padding: 4.88px 9.54px;
 
-  border-radius: 9px;
   border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
   background-color: var(--color-white);
   box-shadow: 1px 1px 3px 0px var(--color-black);
 
@@ -30,7 +30,7 @@ const Container = styled.div`
       height: 25px;
 
       cursor: pointer;
-      border-radius: 50%;
+      border-radius: var(--border-radius-50);
 
       margin-right: 5px;
     }

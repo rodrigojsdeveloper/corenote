@@ -30,6 +30,9 @@ export default createGlobalStyle`
 		
 		--svg: #ffa000;
 		--hover-svg: #FFE3B3;
+
+		--border-radius: 4px;
+		--border-radius-50: 50%;
 	}
 
 	body {

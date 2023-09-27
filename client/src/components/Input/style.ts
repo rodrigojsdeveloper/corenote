@@ -10,8 +10,8 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  border-radius: 3px;
   border: 1px solid var(--gray-200);
+  border-radius: var(--border-radius);
   box-shadow: 1px 1px 3px 0px var(--color-black);
 
   margin: 0 20px;
