@@ -9,7 +9,7 @@ const NotFound = () => {
   return (
     <React.Fragment>
       <HelmetProvider>
-        <Helmet title="Not Found | CoreNote" />
+        <Helmet title="Página não encontrada | CoreNote" />
       </HelmetProvider>
       <Container>
         <div className="not-found-container">

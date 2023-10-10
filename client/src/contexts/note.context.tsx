@@ -34,14 +34,14 @@ export const NoteContextProvider = ({ children }: IChildren) => {
         );
 
         filteredNotFavorites.sort((a: INoteProps, b: INoteProps) => {
-          const dateA = new Date(a.created_at);
-          const dateB = new Date(b.created_at);
+          const dateA = new Date(a.updated_at);
+          const dateB = new Date(b.updated_at);
           return dateB.getTime() - dateA.getTime();
         });
 
         filteredFavorites.sort((a: INoteProps, b: INoteProps) => {
-          const dateA = new Date(a.created_at);
-          const dateB = new Date(b.created_at);
+          const dateA = new Date(a.updated_at);
+          const dateB = new Date(b.updated_at);
           return dateB.getTime() - dateA.getTime();
         });
 

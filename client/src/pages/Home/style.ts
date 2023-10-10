@@ -100,7 +100,15 @@ const Container = styled.div`
       color: var(--svg);
 
       &:hover {
-        background-color: rgba(255, 160, 0, 0.1);
+        background-color: rgba(255, 160, 0, 0.08);
+      }
+
+      &:active {
+        background-color: rgba(255, 160, 0, 0.12);
+      }
+
+      @media (max-width: 370px) {
+        width: 100%;
       }
     }
 
